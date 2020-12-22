@@ -1,4 +1,5 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using TechJobsOO;
 
 namespace TechJobsTest
 {
@@ -8,8 +9,8 @@ namespace TechJobsTest
         [TestMethod]
         public void TestSettingJobId()
        {
-            string testJob1 = new Job();
-            string testJob2 = new Job();
+            Job testJob1 = new Job();
+            Job testJob2 = new Job();
 
             Assert.IsTrue(testJob1 == testJob2);
 

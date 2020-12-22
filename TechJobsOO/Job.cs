@@ -3,7 +3,7 @@ namespace TechJobsOO
 {
     public class Job
     {
-        public int Id { get; }
+        public int Id { get; private set;  }
         private static int nextId = 1;
 
         public string Name { get; set; }
@@ -13,14 +13,18 @@ namespace TechJobsOO
         public CoreCompetency JobCoreCompetency { get; set; }
 
         // TODO: Add the two necessary constructors.
-        public Job()
+        private void SetId()
         {
             Id = nextId;
             nextId++;
         }
-
-        public Job(string name, Employer employerName, Location employerLocation, PositionType jobType, CoreCompetency jobCoreCompetency) 
+        public Job()
         {
+            SetId();
+        }
+        public Job(string name, Employer employerName, Location employerLocation, PositionType jobType, CoreCompetency jobCoreCompetency)
+        {
+            SetId();
             Name = name;
             EmployerName = employerName;
             EmployerLocation = employerLocation;
