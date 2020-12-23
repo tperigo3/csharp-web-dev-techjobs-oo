@@ -8,11 +8,20 @@ namespace TechJobsTest
     {
         [TestMethod]
         public void TestSettingJobId()
-       {
+        {
             Job testJob1 = new Job();
             Job testJob2 = new Job();
 
-            Assert.IsTrue(testJob1 == testJob2);
+            Assert.IsFalse(testJob1 == testJob2);
+
+        }
+        [TestMethod]
+        public void TestJobConstructorSetsAllFields()
+        {
+            Job testJob3 = new Job("Product Tester", "Acme", "Desert", "Quality Control", "Persistence" )
+            
+                
+
 
         }
     }
