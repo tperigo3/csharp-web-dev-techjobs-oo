@@ -6,6 +6,15 @@ namespace TechJobsTest
     [TestClass]
     public class JobTests
     {
+        Job job3;
+        Job job4;
+        
+        [TestInitialize]
+        public void CreateJobObjects()
+        {
+            job3 = new Job("Product Tester", new Employer ("Acme"), new Location("Desert"), new PositionType ("Quality Control"), new CoreCompetency ("Persistence"));
+            job4 = new Job("Product Tester", new Employer("Acme"), new Location("Desert"), new PositionType("Quality Control"), new CoreCompetency("Persistence"));
+        }
         [TestMethod]
         public void TestSettingJobId()
         {
@@ -18,31 +27,45 @@ namespace TechJobsTest
         [TestMethod]
         public void TestJobConstructorSetsAllFields()
         {
-            var employer = new Employer { Value = "Acme" };
-            var employerLocation = new Location { Value = "Desert" };
-            var jobType = new PositionType { Value = "Quality Control"};
-            var jobCoreCompetency = new CoreCompetency { Value = "Persistence" };
-
-            Job testJob3 = new Job("Product Tester", employer, employerLocation, jobType, jobCoreCompetency);
-
-            Assert.IsTrue(testJob3.EmployerName.Value == "Acme");
-            Assert.IsTrue(testJob3.EmployerLocation.Value == "Desert");
-            Assert.IsTrue(testJob3.JobType.Value == "Quality Control");
-            Assert.IsTrue(testJob3.JobCoreCompetency.Value == "Persistence");
+           
+            Assert.IsTrue(job3.EmployerName.Value == "Acme");
+            Assert.IsTrue(job3.EmployerLocation.Value == "Desert");
+            Assert.IsTrue(job3.JobType.Value == "Quality Control");
+            Assert.IsTrue(job3.JobCoreCompetency.Value == "Persistence");
         }
 
         [TestMethod]
         public void TestJobsForEquality()
         {
-            var employer = new Employer { Value = "Acme" };
-            var employerLocation = new Location { Value = "Desert" };
-            var jobType = new PositionType { Value = "Quality Control" };
-            var jobCoreCompetency = new CoreCompetency { Value = "Persistence" };
+            Assert.IsFalse(job3.Id == job4.Id);
+        }
 
-            Job testJob4 = new Job("Product Tester", employer, employerLocation, jobType, jobCoreCompetency);
-            Job testJob5 = new Job("Product Tester", employer, employerLocation, jobType, jobCoreCompetency);
+        [TestMethod]
+        public void TestForToString()
+        {
+                       
+            string testString = job3.ToString();
+            char firstChar = testString[0];
+            char lastChar = testString[testString.Length - 1];
 
-            Assert.IsFalse(testJob4.Id == testJob5.Id);
+            Assert.IsTrue(firstChar == lastChar);
+        }
+        
+        [TestMethod]
+        public void TestForLabelsandData()
+        {
+            var testSetup = $"\nID: {job3.Id}\nName: {job3.Name}\nEmployer: {job3.EmployerName.Value}\n Location: {job3.EmployerLocation.Value}\n Position: {job3.JobType.Value}\n Core Competency: {job3.JobCoreCompetency.Value}\n";
+            
+            Assert.AreEqual(testSetup, job3.ToString());
+        }
+        [TestMethod]
+        public void TestToStringEmptyField()
+        {
+            job3.EmployerName.Value = "";
+            job3.EmployerLocation.Value = "";
+            string testOutput = $"\nID: {job3.Id}\nName: {job3.Name}\nEmployer: Data not available\n Location: Data not available\n Position: {job3.JobType.Value}\n Core Competency: {job3.JobCoreCompetency.Value}\n";
+
+            Assert.AreEqual(testOutput, job3.ToString());
         }
     }
 }
