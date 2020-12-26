@@ -54,7 +54,7 @@ namespace TechJobsTest
         [TestMethod]
         public void TestForLabelsandData()
         {
-            var testSetup = $"\nID: {job3.Id}\nName: {job3.Name}\nEmployer: {job3.EmployerName.Value}\n Location: {job3.EmployerLocation.Value}\n Position: {job3.JobType.Value}\n Core Competency: {job3.JobCoreCompetency.Value}\n";
+            var testSetup = $"\nID: {job3.Id}\nName: {job3.Name}\nEmployer: {job3.EmployerName.Value}\nLocation: {job3.EmployerLocation.Value}\nPosition: {job3.JobType.Value}\nCore Competency: {job3.JobCoreCompetency.Value}\n";
             
             Assert.AreEqual(testSetup, job3.ToString());
         }
@@ -63,7 +63,7 @@ namespace TechJobsTest
         {
             job3.EmployerName.Value = "";
             job3.EmployerLocation.Value = "";
-            string testOutput = $"\nID: {job3.Id}\nName: {job3.Name}\nEmployer: Data not available\n Location: Data not available\n Position: {job3.JobType.Value}\n Core Competency: {job3.JobCoreCompetency.Value}\n";
+            string testOutput = $"\nID: {job3.Id}\nName: {job3.Name}\nEmployer: Data not available\nLocation: Data not available\nPosition: {job3.JobType.Value}\nCore Competency: {job3.JobCoreCompetency.Value}\n";
 
             Assert.AreEqual(testOutput, job3.ToString());
         }

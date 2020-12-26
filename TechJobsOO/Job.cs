@@ -68,7 +68,7 @@ namespace TechJobsOO
             {
                 JobCoreCompetency.Value = "Data not available";
             }
-            infoToString = $"\nID: {Id}\nName: {Name}\nEmployer: {EmployerName.Value}\n Location: {EmployerLocation.Value}\n Position: {JobType.Value}\n Core Competency: {JobCoreCompetency.Value}\n";
+            infoToString = $"\nID: {Id}\nName: {Name}\nEmployer: {EmployerName.Value}\nLocation: {EmployerLocation.Value}\nPosition: {JobType.Value}\nCore Competency: {JobCoreCompetency.Value}\n";
             return infoToString;
         }
 
